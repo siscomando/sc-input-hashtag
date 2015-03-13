@@ -1,0 +1,68 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../font-roboto/roboto.html">
+<link rel="import" href="../paper-elements/paper-elements.html">
+<link rel="import" href="../core-icon/core-icon.html">
+
+<!--
+sc-input-hashtag a smart input that automagically change hashtag typed by links
+
+##### Example
+
+    <sc-input-hashtag url="/hashtags/generator"></sc-input-hashtag>
+
+@element sc-input-hashtag
+@blurb Element providing a smart input that change hashtag typed by links
+@status alpha
+@homepage http://github.com/siscomando/sc-input-hashtag
+-->
+<polymer-element class="core-header" name="sc-input-hashtag" attributes="notitle author url method">
+
+  <template>
+    <link rel="stylesheet" href="sc-input-hashtag.css">
+    <core-ajax 
+     url="{{url}}" handleAs="json"
+    response="{{response}}"
+    params='{"c":""}'
+    method="{{ method ? method : 'GET'}}">
+    </core-ajax>
+
+    <div id="inputComments">
+      <paper-icon-button id="btnComment" icon="communication:chat"></paper-icon-button>
+      <paper-input-decorator raised="true" label="Você tem ideias para resolver problemas...?">
+        <input id="comment" is="core-input" name="c"  value="" autocorrect="off" autocomplete="off">
+        </input>
+      </paper-input-decorator>          
+    </div>    
+
+  </template>
+
+  <script>
+
+    Polymer({     
+      /**
+       * The `author` attribute sets an initial author
+       *
+       * @attribute author
+       * @type string
+       * @default 'Horacio Ibrahim'
+       */
+      author: 'Horacio Ibrahim', 
+      publish: {
+          displaySearch: {value: false, reflect: true},        
+      },
+      /* the best place to the constructor for array or object */
+      created: function() {
+        // initialize but it not is turned public to use by users of the element
+        // to turn public to use attributes or publish.
+      },
+      ready: function() {
+        // Ready is a lifecycle callback.
+        // You can do setup work in here.
+        // More info: http://www.polymer-project.org/docs/polymer/polymer.html#lifecyclemethods
+        // simple test alert(this.issueInfo.register);
+      },
+    });
+
+  </script>
+
+</polymer-element>

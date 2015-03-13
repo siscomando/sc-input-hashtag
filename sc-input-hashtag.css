@@ -1,0 +1,48 @@
+:host {
+  display: block;
+  font-family: 'RobotoDraft', sans-serif;
+}
+
+/* To ensure your styling works under the Shadow DOM polyfill, see
+   www.polymer-project.org/docs/polymer/styling.html#directives */
+polyfill-next-selector { content: ':host > h2'; }
+::content h2 {
+  color: blue;
+}
+
+#inputComments {
+  position: relative;
+  bottom: 0;
+  padding: 1px 10px 6px 10px;
+  border-radius: 5px;
+  border: 3px solid #E8E8E8;
+  box-shadow: 1px 1px 4px #D0D0D0;  
+}
+/*  paper input decorator custom styling */
+#inputComments paper-input-decorator /deep/ .unfocused-underline {
+  /* line color when the input is unfocused */
+  background-color: rgba(204, 204, 204, 0.3);
+}
+#inputComments paper-input-decorator /deep/ .focused-underline {
+  /* line color when the input is focused */
+  background-color: rgba(42, 122, 124, 0.5);
+}
+#inputComments paper-input-decorator /deep/ ::-webkit-input-placeholder {
+  /* platform specific rules for placeholder text */
+  color: #D8D8D8;
+}
+#inputComments paper-input-decorator /deep/ ::-moz-placeholder {
+    color: #D8D8D8;
+}
+#inputComments paper-input-decorator /deep/ :-ms-input-placeholder {
+    color: #D8D8D8;
+}
+#inputComments #btnComment {
+  margin-top: 7px;
+  position: absolute;
+  margin-left: -10px;
+  color: #c8c8c8
+}
+#inputComments #comment {
+  margin-left: 30px;
+}
